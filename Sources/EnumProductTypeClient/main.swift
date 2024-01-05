@@ -1,4 +1,4 @@
-import EnumProductTypes
+import EnumProductType
 
 let a = 17
 let b = 25

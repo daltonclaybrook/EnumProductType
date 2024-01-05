@@ -21,7 +21,7 @@ extension ProductMacroDiagnostic: DiagnosticMessage {
     }
     
     var diagnosticID: MessageID {
-        MessageID(domain: "EnumProductTypesMacros", id: String(describing: self))
+        MessageID(domain: "EnumProductTypeMacros", id: String(describing: self))
     }
     
     var severity: DiagnosticSeverity {

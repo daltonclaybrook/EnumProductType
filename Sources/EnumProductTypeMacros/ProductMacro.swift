@@ -75,7 +75,7 @@ public struct ProductMacro: MemberMacro {
 }
 
 @main
-struct EnumProductTypesPlugin: CompilerPlugin {
+struct EnumProductTypePlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         ProductMacro.self,
         StringifyMacro.self

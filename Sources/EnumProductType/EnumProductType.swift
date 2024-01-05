@@ -8,7 +8,7 @@
 ///
 /// produces a tuple `(x + y, "x + y")`.
 @freestanding(expression)
-public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "EnumProductTypesMacros", type: "StringifyMacro")
+public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "EnumProductTypeMacros", type: "StringifyMacro")
 
 /// A macro that attaches to an enum type and adds a member struct called `Product`.
 ///
@@ -32,4 +32,4 @@ public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "E
 ///
 /// The generated `Product` struct also exposes a handful of helpful convenience methods.
 @attached(member, names: named(Product))
-public macro Product() = #externalMacro(module: "EnumProductTypesMacros", type: "ProductMacro")
+public macro Product() = #externalMacro(module: "EnumProductTypeMacros", type: "ProductMacro")

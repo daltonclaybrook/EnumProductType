@@ -1,4 +1,4 @@
-import EnumProductTypesMacros
+import EnumProductTypeMacros
 import SwiftSyntaxMacros
 import SwiftSyntaxMacrosTestSupport
 import XCTest
