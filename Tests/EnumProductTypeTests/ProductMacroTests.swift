@@ -20,23 +20,13 @@ final class ProductMacroTests: XCTestCase {
             expandedSource: """
             enum Name {
                 case first, middle, last
-            }
-            """,
-            macros: testMacros
-        )
-    }
 
-    func testInspect() throws {
-        assertMacroExpansion(
-            """
-            @Product
-            struct Product<T> {
-                var first: T
-                var middle: T
-                var last: T
+                struct Product<T> {
+                    var first: T
+                    var middle: T
+                    var last: T
+                }
             }
-            """,
-            expandedSource: """
             """,
             macros: testMacros
         )
@@ -69,7 +59,7 @@ final class ProductMacroTests: XCTestCase {
         )
     }
 
-    func test_ifEnumCaseContainsAssociatedTypes_diagnosticIsEmitted() throws {
+    func test_ifEnumCaseContainsAssociatedTypes_expansionFails() throws {
         assertMacroExpansion(
             """
             @Product
@@ -82,12 +72,32 @@ final class ProductMacroTests: XCTestCase {
             expandedSource: """
             enum Name {
                 case first
-                case middle
+                case middle(String)
                 case last
             }
             """,
             diagnostics: [
-                .init(message: "Foo", line: 1, column: 1)
+                .init(message: "Enums containing associated values are not supported", line: 1, column: 1)
+            ],
+            macros: testMacros
+        )
+    }
+
+    func test_ifAttachedTypeIsNotAnEnum_expansionFails() throws {
+        assertMacroExpansion(
+            """
+            @Product
+            struct MyStruct {
+                let foo: Int
+            }
+            """,
+            expandedSource: """
+            struct MyStruct {
+                let foo: Int
+            }
+            """,
+            diagnostics: [
+                .init(message: "This macro can only be used with enums", line: 1, column: 1)
             ],
             macros: testMacros
         )

@@ -14,7 +14,7 @@ extension ProductMacroDiagnostic: DiagnosticMessage {
     var message: String {
         switch self {
         case .onlyEnums:
-            return "The Product macro may only be used on enums"
+            return "This macro can only be used with enums"
         case .associatedValuesUnsupported:
             return "Enums containing associated values are not supported"
         }
