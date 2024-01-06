@@ -1,6 +1,7 @@
-/// A macro that attaches to an enum type and adds a member struct called `Product`.
+/// A macro that attaches to an enum declaration and adds a member struct called `Product`
+/// containing properties for each of the enum's cases.
 ///
-/// This generated struct contains properties for each of the enum's cases. For example,
+/// For example:
 ///
 ///     @Product
 ///     enum Name {

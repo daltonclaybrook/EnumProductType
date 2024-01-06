@@ -8,3 +8,4 @@ enum Name {
 }
 
 let allNames = Name.Product(first: "John", middle: "Fitzgerald", last: "Kennedy")
+print(allNames)
