@@ -1,5 +1,3 @@
-# EnumProductType
-
 A [Swift Macro](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros/) for generating
 [product types](https://en.wikipedia.org/wiki/Product_type) for your enums.
 
