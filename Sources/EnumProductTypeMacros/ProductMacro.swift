@@ -19,7 +19,12 @@ public struct ProductMacro: MemberMacro {
 
         let caseElements = getCaseElements(from: decl)
         guard enumCaseContainsAssociatedValue(in: caseElements) == false else {
-            context.diagnose(node: decl, message: .associatedValuesUnsupported)
+            context.diagnose(node: decl, message: .noAssociatedValues)
+            return []
+        }
+
+        guard caseElements.isEmpty == false else {
+            context.diagnose(node: decl, message: .noCaselessEnums)
             return []
         }
 

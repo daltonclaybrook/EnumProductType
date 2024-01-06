@@ -7,7 +7,8 @@ import SwiftSyntaxMacros
 
 enum ProductMacroDiagnostic {
     case onlyEnums
-    case associatedValuesUnsupported
+    case noAssociatedValues
+    case noCaselessEnums
 }
 
 extension ProductMacroDiagnostic: DiagnosticMessage {
@@ -15,8 +16,10 @@ extension ProductMacroDiagnostic: DiagnosticMessage {
         switch self {
         case .onlyEnums:
             return "This macro can only be used with enums"
-        case .associatedValuesUnsupported:
+        case .noAssociatedValues:
             return "Enums containing associated values are not supported"
+        case .noCaselessEnums:
+            return "Product struct will not be generated for a caseless enum"
         }
     }
     
@@ -26,8 +29,10 @@ extension ProductMacroDiagnostic: DiagnosticMessage {
     
     var severity: DiagnosticSeverity {
         switch self {
-        case .onlyEnums, .associatedValuesUnsupported:
+        case .onlyEnums, .noAssociatedValues:
             return .error
+        case .noCaselessEnums:
+            return .warning
         }
     }
 }

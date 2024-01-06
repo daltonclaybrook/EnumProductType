@@ -102,4 +102,22 @@ final class ProductMacroTests: XCTestCase {
             macros: testMacros
         )
     }
+
+    func test_ifEnumHasNoCases_warningIsGenerated() throws {
+        assertMacroExpansion(
+            """
+            @Product
+            enum Name {
+            }
+            """,
+            expandedSource: """
+            enum Name {
+            }
+            """,
+            diagnostics: [
+                .init(message: "Product struct will not be generated for a caseless enum", line: 1, column: 1, severity: .warning)
+            ],
+            macros: testMacros
+        )
+    }
 }

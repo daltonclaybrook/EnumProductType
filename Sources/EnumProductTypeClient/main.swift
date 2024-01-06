@@ -9,5 +9,5 @@ print("The value \(result) was produced by the code \"\(code)\"")
 
 @Product
 enum Testing {
-
+    case foo
 }
