@@ -87,8 +87,7 @@ public struct ProductMacro: MemberMacro {
 @main
 struct EnumProductTypePlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
-        ProductMacro.self,
-        StringifyMacro.self
+        ProductMacro.self
     ]
 }
 

@@ -4,7 +4,6 @@ import SwiftSyntaxMacrosTestSupport
 import XCTest
 
 let testMacros: [String: Macro.Type] = [
-    "stringify": StringifyMacro.self,
     "Product": ProductMacro.self
 ]
 
