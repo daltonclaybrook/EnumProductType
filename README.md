@@ -50,7 +50,7 @@ enum Season {
 }
 ```
 
-This enables you to create an instance of `Season` and specify values for each member case:
+This enables you to create an instance of `Season` and specify values for all member cases at once:
 
 ```swift
 let seasonalColors = Season.Product<Color>(
