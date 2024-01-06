@@ -8,6 +8,10 @@ let (result, code) = #stringify(a + b)
 print("The value \(result) was produced by the code \"\(code)\"")
 
 @Product
-enum Testing {
-    case foo
+enum Name {
+    case first
+    case middle
+    case last
 }
+
+let allNames = Name.Product(first: "John", middle: "Fitzgerald", last: "Kennedy")

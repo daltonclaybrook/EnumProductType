@@ -120,4 +120,28 @@ final class ProductMacroTests: XCTestCase {
             macros: testMacros
         )
     }
+
+    func test_ifEnumHasGenericTypes_expansionFails() throws {
+        assertMacroExpansion(
+            """
+            @Product
+            enum Name<T: Equatable> {
+                case first
+                case middle
+                case last
+            }
+            """,
+            expandedSource: """
+            enum Name<T: Equatable> {
+                case first
+                case middle
+                case last
+            }
+            """,
+            diagnostics: [
+                .init(message: "Enums with generic types are not supported", line: 1, column: 1)
+            ],
+            macros: testMacros
+        )
+    }
 }

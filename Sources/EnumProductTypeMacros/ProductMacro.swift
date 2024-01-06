@@ -17,6 +17,11 @@ public struct ProductMacro: MemberMacro {
             return []
         }
 
+        guard decl.genericParameterClause == nil else {
+            context.diagnose(node: decl, message: .noGenericTypes)
+            return []
+        }
+
         let caseElements = getCaseElements(from: decl)
         guard enumCaseContainsAssociatedValue(in: caseElements) == false else {
             context.diagnose(node: decl, message: .noAssociatedValues)

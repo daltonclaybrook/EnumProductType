@@ -9,6 +9,7 @@ enum ProductMacroDiagnostic {
     case onlyEnums
     case noAssociatedValues
     case noCaselessEnums
+    case noGenericTypes
 }
 
 extension ProductMacroDiagnostic: DiagnosticMessage {
@@ -20,6 +21,8 @@ extension ProductMacroDiagnostic: DiagnosticMessage {
             return "Enums containing associated values are not supported"
         case .noCaselessEnums:
             return "Product struct will not be generated for a caseless enum"
+        case .noGenericTypes:
+            return "Enums with generic types are not supported"
         }
     }
     
@@ -29,7 +32,7 @@ extension ProductMacroDiagnostic: DiagnosticMessage {
     
     var severity: DiagnosticSeverity {
         switch self {
-        case .onlyEnums, .noAssociatedValues:
+        case .onlyEnums, .noAssociatedValues, .noGenericTypes:
             return .error
         case .noCaselessEnums:
             return .warning
